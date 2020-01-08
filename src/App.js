@@ -11,7 +11,10 @@ export default function App() {
       <button
         key={item}
         value={item}
-        onClick={e => setData(data + e.target.value)}
+        onClick={e => {
+          setData(data + e.target.value);
+          setErr("");
+        }}
       >
         {item}
       </button>
@@ -22,15 +25,18 @@ export default function App() {
     <div className="App wrapper">
       <p>{err}</p>
 
-      <input type="text" name="view" value={data} />
+      {data}
 
       <div className="keypad digits flex">
         {listNum}
         <button
-          name="c"
+          name="back"
           onClick={() => setData(data.substr(0, data.length - 1))}
         >
-          C
+          Back
+        </button>
+        <button name="clear" onClick={() => setData("")}>
+          Clear
         </button>
         <button
           name="="
